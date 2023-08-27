@@ -1,0 +1,178 @@
+﻿<Page x:Class="_6p.Pages.ProdolProfilePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:_6p.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ProdolProfilePage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition/>
+            <RowDefinition Height="100"/>
+
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="530"/>
+            <ColumnDefinition />
+            <ColumnDefinition />
+
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Row="1" Grid.Column="0">
+            <TextBlock Text="Все данные которые отображаются в этом поле  автоматически вставляются в буфер обмена!" TextAlignment="Center" TextWrapping="Wrap"/>
+            <TextBlock  Text="{Binding InfoOperation}"  FontSize="15" TextAlignment="Center" Margin="20" TextWrapping="Wrap" Name="extTb" Foreground="CadetBlue" />
+        </StackPanel>
+        <StackPanel>
+            <Button Name="OpenFileBt"  Drop="FilleDropEvent" AllowDrop="true" Content="Открыть файл" FontSize="12" Click="OpnFileClick" Foreground="CadetBlue">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Width="100" Height="40" CornerRadius="30"  Background="{TemplateBinding Background}"  >
+                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+
+            <TextBlock Name="ResultTb" Margin="10"   Text="{Binding fileName}" HorizontalAlignment="Center" FontWeight="Bold" />
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="1">
+            <Button Name="ProdolButton" Content="ПРОДОЛЬНЫЙ ПРОФИЛЬ"  FontWeight="Bold"  Foreground="CadetBlue" Margin="5"  FontSize="12"  Click="ProdolButton_Click">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Width="400" Height="40" CornerRadius="30"  Background="{TemplateBinding Background}"  >
+                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button Name="NamePointButton" Content="Название точек" Foreground="CadetBlue"  FontSize="12"  Click="NamePointClick">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Width="400" Height="40" CornerRadius="30"  Background="{TemplateBinding Background}"  >
+                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button Name="LinePerelomBt" Content="ПОСТРОЕНИЕ ЛИНИЙ ПЕРЕЛОМА ПРОФИЛЯ"  Margin="5" FontSize="12"  Foreground="CadetBlue" Click="LinePerelomClick">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Width="400" Height="40" CornerRadius="30"  Background="{TemplateBinding Background}"  >
+                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button Name="ResultForAutoCADbt" Content="РЕЗУЛЬТАТ ДЛЯ AutoCAD"  Grid.Row="3" Grid.Column="3"  FontSize="11"  Foreground="CadetBlue" Click="ResulAutoCadClick">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border Width="400" Height="40" CornerRadius="30"  Background="{TemplateBinding Background}"  >
+                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+            </Button>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="2" Orientation="Vertical" VerticalAlignment="Top">
+            <TextBlock Text="Масштаб по горизонтали" Foreground="CadetBlue" FontSize="11" HorizontalAlignment="Center" FontFamily="Comic sans ms"/>
+            <Border CornerRadius="14"  BorderBrush="#FFABADB3" VerticalAlignment="Center" BorderThickness="1" Background="#FFABADB3" Width="70"  Margin="15">
+                <TextBox Text="{Binding MashatPoGorizontal}"   Name ="MashtabGorizontTb" Width="70" BorderThickness="0" VerticalAlignment="Center" Background="Transparent"
+                         />
+            </Border>
+            <TextBlock Text="Масштаб по вертикали" Foreground="CadetBlue" HorizontalAlignment="Center" FontFamily="Comic sans ms"/>
+
+            <Border CornerRadius="14"  BorderBrush="#FFABADB3" VerticalAlignment="Center" BorderThickness="1" Background="#FFABADB3" Width="70"  Margin="15">
+                <TextBox Text="{Binding MashatPoVert}" Width="70" Name="MashtabVertikalTb" Background="Transparent" BorderThickness="0" VerticalAlignment="Center"/>
+
+            </Border>
+
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="3" Orientation="Vertical" VerticalAlignment="Top">
+            <TextBlock Text="Угол поворота" Foreground="CadetBlue" HorizontalAlignment="Center" FontFamily="Comic sans ms"/>
+            <Border CornerRadius="14"  BorderBrush="#FFABADB3" VerticalAlignment="Center" BorderThickness="1" Background="#FFABADB3" Width="70"  Margin="15">
+                <TextBox Text="{Binding ugol}" Name ="CornerTb" Width="70" BorderThickness="0" VerticalAlignment="Center" Background="Transparent"
+                         />
+            </Border>
+            <TextBlock Text="Высота шрифта" Foreground="CadetBlue" HorizontalAlignment="Center" FontFamily="Comic sans ms"/>
+
+            <Border CornerRadius="14"  BorderBrush="#FFABADB3" VerticalAlignment="Center" BorderThickness="1" Background="#FFABADB3" Width="70"  Margin="15">
+                <TextBox Text="{Binding Font2}" Width="70" Name="WidthTb" Background="Transparent" BorderThickness="0" VerticalAlignment="Center"/>
+
+            </Border>
+
+        </StackPanel>
+       
+        <TextBlock Name="disnaceTrackTb" Grid.Row="0" TextAlignment="Center" Grid.Column="1" Margin ="0,10,0,0" Text="{Binding distanceTrack}" HorizontalAlignment="Center"/>
+        <Grid Grid.Row="2" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition/>
+
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Text="X1" Margin="5"/>
+                <Border CornerRadius="14"  BorderBrush="#FFABADB3" VerticalAlignment="Center" BorderThickness="1" Background="#FFABADB3" Width="70"  Margin="5">
+                    <TextBox Text="{Binding X1}"   Name ="X1tb" Width="70" BorderThickness="0" VerticalAlignment="Center" Background="Transparent"
+                         />
+                </Border>
+                <TextBlock Text="Y1" Margin="5"/>
+
+                <Border CornerRadius="14"  BorderBrush="#FFABADB3" VerticalAlignment="Center" BorderThickness="1" Background="#FFABADB3" Width="70"  Margin="5">
+                    <TextBox Text="{Binding Y1}"   Name ="Y1tb" Width="70" BorderThickness="0" VerticalAlignment="Center" Background="Transparent"
+                         />
+                </Border>
+                <TextBlock Text="X2" Margin="5"/>
+
+                <Border CornerRadius="14"  BorderBrush="#FFABADB3" VerticalAlignment="Center" BorderThickness="1" Background="#FFABADB3" Width="70"  Margin="5">
+                    <TextBox Text="{Binding X2}"   Name ="X2tb" Width="70" BorderThickness="0" VerticalAlignment="Center" Background="Transparent"
+                         />
+                </Border>
+                <TextBlock Text="Y2" Margin="5"/>
+
+                <Border CornerRadius="14"  BorderBrush="#FFABADB3" VerticalAlignment="Center" BorderThickness="1" Background="#FFABADB3" Width="70"  Margin="5">
+                    <TextBox Text="{Binding Y2}"   Name ="Y2tb" Width="70" BorderThickness="0" VerticalAlignment="Center" Background="Transparent"
+                         />
+                </Border>
+                <TextBlock Text="ТК" Margin="5"/>
+
+                <Border CornerRadius="14"  BorderBrush="#FFABADB3" VerticalAlignment="Center" BorderThickness="1" Background="#FFABADB3" Width="70"  Margin="5">
+                    <TextBox Text="{Binding TK}"   Name ="TKtb" Width="70" BorderThickness="0" VerticalAlignment="Center" Background="Transparent"
+                         />
+                </Border>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center">
+                <Button Name="ReplaceX1Y1Bt" Content="ЗАМЕНИТЬ X1 Y1"   FontSize="10"  Foreground="CadetBlue" Click="ReplaceX1Y1Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="150" Height="40" CornerRadius="30"  Background="{TemplateBinding Background}"  >
+                                <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button Name="ReplaceX2Y2Bt" Content="ЗАМЕНИТЬ X2 Y2"   FontSize="10"  Foreground="CadetBlue" Click="ReplaceX2Y2Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="150" Height="40" CornerRadius="30"  Background="{TemplateBinding Background}"  >
+                                <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+             
+            </StackPanel>
+
+       
+
+        </Grid>
+        
+        <CheckBox Content="X1Y1" Click="CheckX1Click" x:Name="CheckX1Y1"  Grid.Row="3" Grid.Column="2" FontSize="11"  Foreground="CadetBlue" FontFamily="Comic Sans Ms"/>
+        <CheckBox Content="X2Y2"   Click="CheckX2Click" Grid.Row="3" x:Name="CheckX2Y2" Grid.Column="2" FontSize="11" Margin="100,0,0,0"  Foreground="CadetBlue" FontFamily="Comic Sans Ms"/>
+
+    </Grid>
+</Page>
